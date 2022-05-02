@@ -176,13 +176,6 @@ func fromLookup(host string) (string, error) {
 		hosts []string
 	)
 
-	fqdn, err = net.LookupCNAME(host)
-	if err == nil && len(fqdn) != 0 {
-		debug("LookupCNAME success: %q", fqdn)
-		goto out
-	}
-	debug("LookupCNAME failed: %v", err)
-
 	debug("Looking up: %q", host)
 	addrs, err = net.LookupIP(host)
 	if err != nil {
